@@ -1,0 +1,76 @@
+*ต้องเข้าไปในpathของโฟล์เดอร์ที่มีไฟล์นั้น*เช่น จะรันtraccar server ต้องเข้าไปใน เข่น C\Chayada\Traccar\TraccarServer
+
+ติดตั้งฝั่งWeb
+ฝั่งbackend
+-Build server:
+./gradlew build
+
+-รันTraccar Server:
+java -jar target/tracker-server.jar
+------------------------------------------------
+Web  ฝั่งfrontend
+-ติดตั้ง dependency: 
+npm install
+
+-รันในlocalhost(Create React App):
+npm start
+(จะใช้ API ได้ละ)
+
+-เปิดBrowser:localhost:3000
+
+-------------------------------------------------
+ติดตั้งฝั่งApplication *Android*
+ขั้นตอนที่ 1:เปิดโหมดDeveloper Options และ USB Debugging บน Android:
+-เข้าแอป การตั้งค่า (Settings) ของโทรศัพท์
+-ไปที่ เกี่ยวกับโทรศัพท์ (About phone)
+-หาเมนูชื่อ หมายเลขบิลด์ (Build number)
+-บางรุ่นอาจต้องไปที่ "ข้อมูลซอฟต์แวร์ (Software Information)" ก่อนถึงจะเจอ
+-แตะที่ Build number 7 ครั้ง
+-จะมีข้อความขึ้นว่า “คุณกำลังจะเป็นนักพัฒนาแล้ว”
+-ถ้าระบบถามรหัส PIN หรือ Pattern ให้ใส่เลย
+-เข้าไปที่ Developer options (ตัวเลือกสำหรับนักพัฒนา)
+-USB Debugging (การดีบั๊ก USB)
+
+ขั้นตอนที่2: เชื่อมกับคอมพิวเตอร์
+-เสียบสาย USB เข้ากับคอมพิวเตอร์
+-ถ้ามีข้อความบนมือถือว่า "Allow USB Debugging?" ให้กด Allow
+
+ ขั้นตอนที่3 download Android SDK Platform-Tools (เพื่อให้มี adb(Android Debug Bridge)) 
+-link:https://developer.android.com/tools/releases/platform-tools?hl=th
+-แตกไฟล์เรียบร้อย *อย่าไว้ใน C:\Program Files\อาจมีปัญหาเรื่อง permission*
+-add in "Edit the system environment variables"
+-ในหน้าต่างที่ขึ้นมา กดปุ่ม "Environment Variables"
+-ที่ส่วน System variables หรือ User variables:
+เลือกตัวแปรชื่อ Path แล้วคลิก Edit
+-คลิก New แล้วใส่:Pathที่ติดตั้งADB
+-OK
+
+ขั้นตอนที่4:ดาวน์โหลดตัว .exe ของ Android Studio
+-link:https://developer.android.com/studio/index.html
+การตั้งค่าในแอป
+-เปิด Android Studio > ไปที่เมนูFile > Settings > Appearance & Behavior > System Settings > Android SDK
+ตรวจสอบว่า SDK Path อยู่ในโฟลเดอร์ที่เหมาะสม (เช่น C:\Users\Chayada\AppData\Local\Android\Sdk)
+-ในแท็บ SDK Tools ให้เลือกติดตั้ง/อัปเดต:
+-Android SDK Command-line Tools
+-Android SDK Platform-Tools (รวม adb)
+-Android SDK Build-Tools (เวอร์ชันล่าสุด)
+
+
+ขั้นตอนที่5:ติดตั้ง Flutter SDK (ถ้ายังไม่ได้)
+ -link:flutter.dev/docs/get-started/install
+-แตกไฟล์เรียบร้อย *อย่าไว้ใน C:\Program Files\อาจมีปัญหาเรื่อง permission*
+-add in "Edit the system environment variables"
+-ในหน้าต่างที่ขึ้นมา กดปุ่ม "Environment Variables"
+-ที่ส่วน System variables หรือ User variables:
+เลือกตัวแปรชื่อ Path แล้วคลิก Edit
+-คลิก New แล้วใส่:Pathที่ติดตั้งflutter\bin เช่น C:\flutter\bin
+-OK
+เปิด PowerShell ใหม่ หรือ Command Prompt *เข้าpathให้ถูก*
+-ติดตั้ง dependencies(ไลบรารี) ที่ระบุไว้ในไฟล์:flutter pub get
+-พิมพ์flutter doctor --android-licenses(ตอบYes every choice)
+-ตรวจสอบ:flutter doctor
+-รันแอป Traccar:flutter run
+-ถ้าต่อมือถือแล้ว ยังไม่ขึ้น:flutter devices
+-clean project:flutter clean
+
+
