@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Realtime Location Tracker</title>
+  <style>
+    #map { height: 300px; width: 100%; margin-bottom: 1rem; }
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 5px; }
+    th { background-color: #eee; }
+    button { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <h2>📍 Realtime Location Tracker</h2>
+  <div id="map"></div>
+
+  <div>
+    <button id="downloadCsv">📥 ดาวน์โหลด CSV</button>
+    <button id="clearLog">🧹 ล้างประวัติทั้งหมด</button>
+    <button id="toggleTracking">⏸ หยุดการ Tracking</button>
+  </div>
+
+  <p>📏 ระยะทางรวม: <span id="totalDistance">-</span> กม.</p>
+  <canvas id="distanceChart" width="100%" height="200"></canvas>
+
+  <h3>📋 ตาราง Log</h3>
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Timestamp</th>
+        <th>Speed (km/h)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgrzo20-jbtz3Cfqk2-dt_TOBKFItNjr4"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
